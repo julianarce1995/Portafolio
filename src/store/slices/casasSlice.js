@@ -4,24 +4,24 @@ import axios from "axios";
 
 export const casasApi = createAsyncThunk(
     'casas/casasApi',
-    async () => {
+    async ( ) => {
         try {
-            const { data:{id}} = await axios.get('https://hp-api.onrender.com/api')
-            return {id}
+            const response = await axios.get('https://hp-api.onrender.com/api/characters')
+            return response.data
         } catch (e) {
             const error = e.response?.data?.error || 'network error'
-            return rejectedWithValue(error)
+            return error
         }
     }
 )
+const data= []
 
-const initialState = {}
+const initialState = {error: null,data}
 
 const casasSlice = createSlice({
     name: 'casas',
     initialState,
     reducers: {
-
     },
     extraReducers: (builder) => {
         builder
@@ -30,7 +30,7 @@ const casasSlice = createSlice({
             })
             .addCase(casasApi.fulfilled,(state, action) => {
                 state.status = 'succeeded'
-                state = action.payload
+                state.data = action.payload
                 localStorage.setItem('favoritos', action.payload)
             })
             .addCase(casasApi.rejected,(state, action) => {
