@@ -1,57 +1,70 @@
 "use client";
 
-import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { selectCasasInfo } from "@/store/selector/casasSelector";
-import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { selectCasasInfo } from "../store/selector/casasSelector";
+import { useState } from "react";
+import CharacterSection from "@/components/CharacterSection";
+import CharacterSearched from "@/components/CharacterSearched";
 
-import { casasApi } from "@/store/slices/casasSlice";
-import { useEffect, useState } from "react";
+export default function App() {
+  const info = useSelector(selectCasasInfo);
+  const [character, setCharacter] = useState('');
+  const [message, setMessage] = useState(false);
+  const [searchResults, setSearchResults] = useState([]);
 
-export default function Home() {
-  const dispatch = useAppDispatch();
-  const info = useAppSelector(selectCasasInfo);
-
-  async function name() {
-    await dispatch(casasApi()).then().catch();
+  const handleInputChange = (event) => {
+    setCharacter(event.target.value);
+    event.preventDefault()
+    const filteredResults = info.filter(item =>
+      item.name && item.name.toLowerCase().includes(character.toLowerCase())
+    );
+  
+    setSearchResults(filteredResults);
+    setMessage(false)
+  };
+  
+  function searchCharacter(e) {
+    event.preventDefault()
+    setMessage(true)
   }
-
-  useEffect(() => {
-    console.log(info);
-  }, [info]);
-
   return (
-    <div className="h-screen flex items-center flex-col">
-      <form className="w-1/2 max-w-sm">
-        <div className="flex items-center border-b border-teal-500 py-3">
-          <button
-            onClick={name}
-            className="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
-            type="button"
-          >
-            Buscar
-          </button>
-        </div>
-      </form>
-
-      <div className="w-1/2 flex overflow-x-auto shadow-md sm:rounded-lg">
-        <table className="w-full text-sm text-left text-gray-500 ">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 ">
-            <tr>
-              <th className="px-6 py-3">name</th>
-              <th className="px-6 py-3">specie</th>
-            </tr>
-          </thead>
-          <tbody>
-            {info?.map((item) => (
-              <tr className="bg-white border-b">
-                <th className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                  {item.name}
-                </th>
-                <td className="px-6 py-4">{item.species}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+    <div className="flex justify-center pb-16 h-screen">
+      <div className="w-full md:w-1/2 py-10 pb-32 flex flex-col items-center bg-gray-50 drop-shadow-2xl shadow-blue-500/50 overflow-y-scroll scrollbar-thin overscroll-contain scrollbar-thumb-teal-500 scrollbar-track-gray-50">
+        <form onSubmit={searchCharacter} className="m-10 w-1/2">
+          <div className="flex items-center justify-between border-b border-teal-500 py-2">
+            <input
+              type="text"
+              value={character}
+              onChange={handleInputChange}
+              className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+              placeholder="Escribe aquí"
+            />
+            <button
+              type="submit"
+              className="m-3 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+            >
+              Buscar
+            </button>
+          </div>
+        </form>
+        {
+        message && searchResults.length > 0
+        ?
+        <span className="text-2xl text-white bg-gray-800 py-3 px-6 rounded-lg m-4 animate-bounce">Results</span>
+        :
+        message
+        ?
+        <span className="text-2xl text-white bg-gray-800 py-3 px-6 rounded-lg m-4 animate-bounce">Not Found</span>
+        :
+        ''
+        }
+        {
+        searchResults.length > 0
+        ?
+        <CharacterSearched searchResults={searchResults} />
+        : 
+        <CharacterSection />
+        }
       </div>
     </div>
   );

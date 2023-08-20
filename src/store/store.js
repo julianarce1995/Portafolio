@@ -1,12 +1,14 @@
-import { configureStore } from "@reduxjs/toolkit"
-import casasReducer from "./slices/casasSlice"
+import { configureStore } from "@reduxjs/toolkit";
+import casasReducer from "./slices/casasSlice";
+import loaderReducer from "./slices/loaderSlice";
 
 export const rootreducer = {
-    casas: casasReducer,
-}
+  casas: casasReducer,
+  loader: loaderReducer,
+};
 
 const store = configureStore({
-    reducer :rootreducer
-})
+  reducer: rootreducer,
+});
 
-export default store
+export default store;
