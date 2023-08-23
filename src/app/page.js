@@ -3,14 +3,13 @@
 import { useSelector } from "react-redux";
 import { selectCasasInfo } from "../store/selector/casasSelector";
 import { useState } from "react";
-import CharacterSection from "@/components/CharacterSection";
-import CharacterSearched from "@/components/CharacterSearched";
+import CharacterSection from "../components/CharacterSection";
 
 export default function App() {
   const info = useSelector(selectCasasInfo);
   const [character, setCharacter] = useState('');
   const [message, setMessage] = useState(false);
-  const [searchResults, setSearchResults] = useState([]);
+  const [results, setResults] = useState([]);
 
   const handleInputChange = (event) => {
     setCharacter(event.target.value);
@@ -19,11 +18,11 @@ export default function App() {
       item.name && item.name.toLowerCase().includes(character.toLowerCase())
     );
   
-    setSearchResults(filteredResults);
+    setResults(filteredResults);
     setMessage(false)
   };
   
-  function searchCharacter(e) {
+  function searchCharacter(event) {
     event.preventDefault()
     setMessage(true)
   }
@@ -48,7 +47,7 @@ export default function App() {
           </div>
         </form>
         {
-        message && searchResults.length > 0
+        message && results.length > 0
         ?
         <span className="text-2xl text-white bg-gray-800 py-3 px-6 rounded-lg m-4 animate-bounce">Results</span>
         :
@@ -58,13 +57,7 @@ export default function App() {
         :
         ''
         }
-        {
-        searchResults.length > 0
-        ?
-        <CharacterSearched searchResults={searchResults} />
-        : 
-        <CharacterSection />
-        }
+        <CharacterSection results={results.length > 0 ? results : info}/>
       </div>
     </div>
   );

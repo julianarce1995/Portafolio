@@ -1,7 +1,6 @@
 import {
   createSlice,
   createAsyncThunk,
-  rejectedWithValue,
 } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -18,7 +17,6 @@ export const casasApi = createAsyncThunk("casas/casasApi", async () => {
         return "404";
       }
     }
-    console.log(error);
     return "Network error!";
   }
 });
@@ -37,7 +35,6 @@ const casasSlice = createSlice({
       .addCase(casasApi.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.data = action.payload;
-        localStorage.setItem("favoritos", action.payload);
       })
       .addCase(casasApi.rejected, (state, action) => {
         state.status = "failed";

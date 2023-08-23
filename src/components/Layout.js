@@ -1,3 +1,5 @@
+'use client'
+
 import { selectCasasInfo } from "@/store/selector/casasSelector";
 import { casasApi } from "@/store/slices/casasSlice";
 import { hideSpinner, showSpinner } from "@/store/slices/loaderSlice";
@@ -8,15 +10,14 @@ export default function Layout({ children }) {
   const dispatch = useDispatch();
   const info = useSelector(selectCasasInfo);
 
-  async function name() {
+  async function fetchCharacters() {
     dispatch(showSpinner());
     await dispatch(casasApi())
       .then(() => {
         dispatch(hideSpinner());
       })
-      .catch((error) => {
+      .catch(() => {
         dispatch(hideSpinner());
-        console.log(error, "erroooooor");
       });
   }
 
@@ -29,7 +30,7 @@ export default function Layout({ children }) {
           </span>
           <button
             disabled={info.length > 0 ? true : false}
-            onClick={name}
+            onClick={fetchCharacters}
             className={info.length > 0 ? "hidden" : "animate-pulse animate-bounce me-6 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"}
             type="button"
           >

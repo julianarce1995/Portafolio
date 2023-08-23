@@ -1,3 +1,5 @@
+'use client'
+
 import { useSelector } from "react-redux";
 import { selectLoaderValue } from "../store/selector/loaderSelector";
 import React, { useEffect } from "react";

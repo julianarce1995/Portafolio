@@ -1,6 +1,8 @@
 import "../public/globals.css";
 import { Inter } from "next/font/google";
 import Providers from "../store/providers";
+import Layout from "../components/Layout";
+import LoadSpinner from "../components/LoadSpinner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,11 +14,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className && "h-screen"}>
+      <body className={inter.className}>
         <main>
-        <Providers>
-          {children}
-        </Providers>
+          <Providers>
+            <Layout>
+              {children}
+              <LoadSpinner />
+            </Layout>
+          </Providers>
         </main>
       </body>
     </html>

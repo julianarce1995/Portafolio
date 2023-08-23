@@ -1,7 +1,10 @@
+'use client'
+
+import Character from '../../../components/Character'
 import React from 'react'
 
 export default function page({ params }) {
   return (
-    <div>id: {params.id} jajaj</div>
+      <Character id={params.id}/>
   )
 }
