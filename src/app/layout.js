@@ -1,7 +1,7 @@
 import "../public/globals.css";
 import { Inter } from "next/font/google";
 import Providers from "../store/providers";
-import Layout from "../components/Layout";
+import Layout from "../components/MainLayout";
 import LoadSpinner from "../components/LoadSpinner";
 
 const inter = Inter({ subsets: ["latin"] });

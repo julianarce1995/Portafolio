@@ -4,7 +4,7 @@ import {
 } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const casasApi = createAsyncThunk("casas/casasApi", async () => {
+export const harryPotterApi = createAsyncThunk("harryPotter/harryPotterApi", async () => {
   try {
     const response = await axios.get(
       "https://hp-api.onrender.com/api/characters"
@@ -23,25 +23,25 @@ export const casasApi = createAsyncThunk("casas/casasApi", async () => {
 
 const initialState = { error: null, data: [] };
 
-const casasSlice = createSlice({
-  name: "casas",
+const harryPotterSlice = createSlice({
+  name: "harryPotter",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(casasApi.pending, (state) => {
+      .addCase(harryPotterApi.pending, (state) => {
         state.status = "pending";
       })
-      .addCase(casasApi.fulfilled, (state, action) => {
+      .addCase(harryPotterApi.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.data = action.payload;
       })
-      .addCase(casasApi.rejected, (state, action) => {
+      .addCase(harryPotterApi.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;
       });
   },
 });
 
-const { reducer } = casasSlice;
+const { reducer } = harryPotterSlice;
 export default reducer;

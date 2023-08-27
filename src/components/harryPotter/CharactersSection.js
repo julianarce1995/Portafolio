@@ -1,13 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-export default function CharacterSection({ results }) {
+export default function CharactersSection({ results, startPage, endPage }) {
+  const [resultsSlice, setResultsSlice] = useState([]);
+
+  useEffect(() => {
+    setResultsSlice(results.slice(startPage, endPage));
+  }, [results, endPage]);
+
   return (
-    <div className="flex flex-col items-center w-full">
-      {results.length > 0 ? (
-        results.map((item) => (
+    <div className="flex flex-col items-center w-full h-[75%]">
+      {resultsSlice.length > 0 ? (
+        resultsSlice.map((item) => (
           <div
             key={item.id}
             className="flex mb-8 max-w-sm bg-white p-0 lg:w-2/4 rounded-xl shadow-2xl shadow-gray-600"
@@ -16,14 +22,17 @@ export default function CharacterSection({ results }) {
               {item.image ? (
                 <img className="w-44 h-60 rounded-s-lg" src={item.image}></img>
               ) : (
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/HP_-_Harry_Potter_wordmark.svg/1871px-HP_-_Harry_Potter_wordmark.svg.png"></img>
+                <img
+                  className="w-44 h-60 rounded-s-lg"
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/HP_-_Harry_Potter_wordmark.svg/1871px-HP_-_Harry_Potter_wordmark.svg.png"
+                ></img>
               )}
             </div>
             <div className="w-full flex flex-col justify-around">
               <span className="text-center capitalize text-xl font-bold text-gray-700 mt-3 me-4">
                 {item.name}
               </span>
-              <div className="flex flex-col m-4">
+              <div className="flex flex-col mx-4 my-2">
                 <h5 className="mb-1 text-2xl me-2 text-sm font-bold tracking-tight text-gray-900">
                   Casa:
                 </h5>
@@ -39,7 +48,7 @@ export default function CharacterSection({ results }) {
               </div>
               <div className="w-full flex justify-center mb-3">
                 <Link
-                  href={`/show/${item.id}`}
+                  href={`/harry_potter/show/${item.id}`}
                   className="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-teal-500 rounded-lg hover:bg-teal-700 focus:ring-4 focus:outline-None focus:ring-teal-300"
                 >
                   Read more
@@ -65,7 +74,7 @@ export default function CharacterSection({ results }) {
         ))
       ) : (
         <span className="text-2xl text-red-700 bg-red-200 py-3 px-6 rounded-lg">
-          Click en Conectar
+          Not Found
         </span>
       )}
     </div>

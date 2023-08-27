@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import casasReducer from "./slices/casasSlice";
+import harryPotterReducer from "./slices/harryPotterSlice";
 import loaderReducer from "./slices/loaderSlice";
 
 export const rootreducer = {
-  casas: casasReducer,
+  harryPotter: harryPotterReducer,
   loader: loaderReducer,
 };
 

@@ -2,7 +2,7 @@
 
 import { useSelector } from "react-redux";
 import { selectLoaderValue } from "../store/selector/loaderSelector";
-import React, { useEffect } from "react";
+import React from "react";
 
 export default function LoadSpinner() {
   const show = useSelector(selectLoaderValue);
