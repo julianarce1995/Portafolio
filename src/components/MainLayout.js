@@ -42,13 +42,13 @@ export default function Layout({ children }) {
 
   return (
     <div >
-      <nav className="flex justify-between bg-gray-800 fixed w-full h-16 z-40 shadow-2xl shadow-slate-500">
+      <nav className="flex justify-between bg-gray-800 fixed w-full h-16 z-40 border-b-2 border-b-slate-700 shadow-lg shadow-slate-400">
         <div className="flex items-center">
           <Link
             href="/"
-            className="text-white ms-6 py-2 text-xl font-bold"
+            className="text-white ms-6 py-2 text-2xl font-extrabold"
           >
-            Julian D. Arce<p className="text-xs font-medium">software developer</p>
+            Julian D. Arce<p className="text-xs font-medium text-center">| Software Developer |</p>
           </Link>
         </div>
         <div className={currentPage === "/" ? "hidden" : "flex h-16 items-center"} >
@@ -60,9 +60,10 @@ export default function Layout({ children }) {
           {children}
         </div>
         <div className="fixed bottom-4 left-40 right-40 z-10">
+          <div className="w-full flex justify-center">
           <button
             onClick={handleNavFooter}
-            className="w-full flex justify-center pt-3"
+            className="hidden w-10 md:flex justify-center pt-3"
           >
             <svg
               className="w-8 text-teal-500 sm-hidden"
@@ -83,6 +84,7 @@ export default function Layout({ children }) {
               />
             </svg>
           </button>
+          </div>
         </div>
       </main>
       <div ref={footerRef}>

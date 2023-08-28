@@ -33,11 +33,11 @@ export default function Character({ id }) {
   }, [data]);
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
+    <div className="flex items-center justify-center min-h-screen bg-white">
       {characterFound ? (
         <div
           key={characterFound.id}
-          className="flex flex-col max-w-xs bg-white rounded-xl shadow-2xl shadow-gray-600"
+          className="flex flex-col max-w-xs rounded-xl shadow-2xl shadow-gray-600"
         >
           <div className="w-full h-full">
             {characterFound.image ? (
@@ -55,19 +55,19 @@ export default function Character({ id }) {
                 {characterFound.name ? characterFound.name : null}
               </span>
               <h5 className="text-2xl me-2 text-sm font-bold tracking-tight text-gray-900">
-                Casa:
+                House:
               </h5>
               <span className="capitalize text-sm text-gray-700">
                 {characterFound.house ? characterFound.house : "None"}
               </span>
               <h5 className="text-2xl me-2 text-sm font-bold tracking-tight text-gray-900">
-                Linaje:
+                Ancestry:
               </h5>
               <span className="capitalize text-sm text-gray-700">
                 {characterFound.ancestry ? characterFound.ancestry : "none"}
               </span>
               <h5 className="text-2xl me-2 text-sm font-bold tracking-tight text-gray-900">
-                Color ocular:
+                Eye Color:
               </h5>
               <span className="capitalize text-sm text-gray-700">
                 {characterFound.eyeColour ? characterFound.eyeColour : "none"}

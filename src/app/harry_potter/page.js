@@ -105,7 +105,7 @@ export default function HarryPotterPage() {
             onClick={prevPage}
             className="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-teal-500 rounded-lg hover:bg-teal-700 focus:ring-4 focus:outline-None focus:ring-teal-300"
           >
-            Prev Page
+            Prev. Page
           </button>
           <button
             onClick={nextPage}

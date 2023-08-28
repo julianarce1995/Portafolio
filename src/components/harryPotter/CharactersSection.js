@@ -34,16 +34,16 @@ export default function CharactersSection({ results, startPage, endPage }) {
               </span>
               <div className="flex flex-col mx-4 my-2">
                 <h5 className="mb-1 text-2xl me-2 text-sm font-bold tracking-tight text-gray-900">
-                  Casa:
+                  House:
                 </h5>
                 <span className="mb-1 capitalize text-sm text-gray-700">
                   {item.house ? item.house : "None"}
                 </span>
                 <h5 className="mb-1 text-2xl me-2 text-sm font-bold tracking-tight text-gray-900">
-                  Linaje:
+                  Actor:
                 </h5>
                 <span className="capitalize text-sm text-gray-700">
-                  {item.ancestry ? item.ancestry : "None"}
+                  {item.actor ? item.actor : "None"}
                 </span>
               </div>
               <div className="w-full flex justify-center mb-3">
