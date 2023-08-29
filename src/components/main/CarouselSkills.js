@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
 export default function CarouselSkills() {
-  const [prueba, setPrueba] = useState(false);
   const [startImg, setStartImg] = useState(0);
   const [endImg, setEndImg] = useState(5);
   const [resultsSlice, setResultsSlice] = useState([]);
@@ -51,9 +50,8 @@ export default function CarouselSkills() {
   }, [endImg]);
 
   return (
-    <div className="w-full bg-teal-500 p-4 shadow-[rgba(0,_0,_0,_0.24)_10px_10px_25px]">
-      <h2 className={prueba?"text-center font-bold ease-in duration-300": "text-center text-4xl font-bold"}>Skills</h2>
-      <button onClick={()=>setPrueba(!prueba)}>buttoo</button>
+    <div id="carouselSkills" className="w-full bg-teal-500 p-4 shadow-[rgba(0,_0,_0,_0.24)_10px_10px_25px]">
+      <h2 className="text-center text-4xl font-bold">Skills</h2>
       <div className="flex items-center">
         <button
           type="button"

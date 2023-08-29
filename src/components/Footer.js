@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="flex bg-gray-800 pb-4 z-10">
-      <div className="w-full mx-10 md:py-8">
+      <div className="w-full mx-10 py-8">
         <div className="sm:flex sm:items-center sm:justify-between">
           <h5 className="text-3xl text-white font- sans font-bold text-gray-500">
             Julian David Arce Araujo
@@ -18,17 +18,7 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <a href="#" className="mr-4 hover:underline md:mr-6">
-                Privacy Policy
-              </a>
-            </li>
-            <li>
-              <a href="#" className="mr-4 hover:underline md:mr-6 ">
-                Licensing
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:underline">
+              <a href="/" className="hidden hover:underline">
                 Contact
               </a>
             </li>
