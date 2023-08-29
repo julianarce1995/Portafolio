@@ -49,7 +49,7 @@ export default function CharactersSection({ results, startPage, endPage }) {
               <div className="w-full flex justify-center mb-3">
                 <Link
                   href={`/harry_potter/show/${item.id}`}
-                  className="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-teal-500 rounded-lg hover:bg-teal-700 focus:ring-4 focus:outline-None focus:ring-teal-300"
+                  className="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-gray-800 rounded-lg hover:bg-gray-700 focus:ring-4 focus:outline-None focus:ring-gray-300"
                 >
                   Read more
                   <svg

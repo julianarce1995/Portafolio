@@ -63,7 +63,7 @@ export default function Layout({ children }) {
           <div className="w-full flex justify-center">
           <button
             onClick={handleNavFooter}
-            className="hidden w-10 md:flex justify-center pt-3"
+            className="hidden w-10 lg:flex justify-center pt-3"
           >
             <svg
               className="w-8 text-teal-500 sm-hidden"

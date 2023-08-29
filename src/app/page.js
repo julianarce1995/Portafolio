@@ -1,6 +1,7 @@
 "use client";
 
 import CarouselSkills from "@/components/main/CarouselSkills";
+import ContactForm from "@/components/main/ContactForm";
 import MyInfo from "@/components/main/MyInfo";
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
       <div className="w-full flex flex-col justify-around items-center text-slate-50 mt-16">
         <MyInfo/>
         <CarouselSkills/>
+        <ContactForm/>
       </div>
     </div>
   )

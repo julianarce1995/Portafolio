@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 export default function CarouselSkills() {
+  const [prueba, setPrueba] = useState(false);
   const [startImg, setStartImg] = useState(0);
   const [endImg, setEndImg] = useState(5);
   const [resultsSlice, setResultsSlice] = useState([]);
@@ -26,10 +27,10 @@ export default function CarouselSkills() {
     "mui",
     "font_awesome",
     "redux",
-    "jquery",
+    "sql",
     "mongo",
     "node",
-    "sql"
+    "jquery",
   ];
   function prevSection() {
     if (startImg !== 0) {
@@ -51,7 +52,8 @@ export default function CarouselSkills() {
 
   return (
     <div className="w-full bg-teal-500 p-4 shadow-[rgba(0,_0,_0,_0.24)_10px_10px_25px]">
-      <h2 className="text-center text-4xl font-bold">Skills</h2>
+      <h2 className={prueba?"text-center font-bold ease-in duration-300": "text-center text-4xl font-bold"}>Skills</h2>
+      <button onClick={()=>setPrueba(!prueba)}>buttoo</button>
       <div className="flex items-center">
         <button
           type="button"
@@ -75,9 +77,9 @@ export default function CarouselSkills() {
             <span className="sr-only">Previous</span>
           </span>
         </button>
-        <div className="w-full grid grid-rows-6 sm:grid sm:grid-rows-3 md:grid md:grid-rows-2 grid-flow-col lg:flex lg:flex-row mt-5 lg:mt-0 justify-between overflow-hidden rounded-lg">
+        <div className="w-full grid grid-cols-1 place-items-center sm:grid sm:grid-cols-2 md:flex md:flex-row mt-5 lg:mt-0 justify-between overflow-hidden rounded-lg">
           {resultsSlice.map((item) => (
-            <div className="w-62 m-4">
+            <div className={item === imagesSkills[(endImg-1)] ? "w-62 m-4 sm:col-span-2":"w-62 m-4" } key={item}>
               <img
                 className="lg:w-28 lg:h-28 w-36 h-36 my-4"
                 src={"skills/"+item+".svg"}
@@ -113,22 +115,27 @@ export default function CarouselSkills() {
       <div className="flex space-x-3 justify-center">
         <button
           type="button"
+          onClick={()=> {setStartImg(0),setEndImg(5)}}
           className="w-3 h-3 rounded-full bg-gray-100"
         ></button>
         <button
           type="button"
+          onClick={()=> {setStartImg(5),setEndImg(10)}}
           className="w-3 h-3 rounded-full bg-gray-100"
         ></button>
         <button
           type="button"
+          onClick={()=> {setStartImg(10),setEndImg(15)}}
           className="w-3 h-3 rounded-full bg-gray-100"
         ></button>
         <button
           type="button"
+          onClick={()=> {setStartImg(15),setEndImg(20)}}
           className="w-3 h-3 rounded-full bg-gray-100"
         ></button>
         <button
           type="button"
+          onClick={()=> {setStartImg(20),setEndImg(25)}}
           className="w-3 h-3 rounded-full bg-gray-100"
         ></button>
       </div>

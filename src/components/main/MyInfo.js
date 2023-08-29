@@ -2,7 +2,7 @@ import React from "react";
 
 export default function MyInfo() {
   return (
-    <div className="sm:w-full text-black flex justify-center my-8">
+    <div className="sm:w-full text-black flex justify-center my-16">
       <div className="w-3/4 md:full flex flex-col md:flex-row items-center">
         <img
           className="w-40 h-40 rounded-full shadow-2xl shadow-slate-700 border-2 border-slate-700 my-10 m-2"
