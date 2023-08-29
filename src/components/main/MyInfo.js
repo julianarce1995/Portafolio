@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function MyInfo() {
   return (
     <div className="sm:w-full text-black flex justify-center my-16">

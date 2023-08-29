@@ -55,7 +55,7 @@ export default function Layout({ children }) {
           <ButtonsLayout currentPage={currentPage} />        
         </div>
       </nav>
-      <main>
+      <main className="bg-white">
         <div ref={mainRef}>
           {children}
         </div>
