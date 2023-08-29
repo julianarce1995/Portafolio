@@ -8,7 +8,9 @@ export default function ContactForm() {
 
   function sendEmail(e) {
     e.preventDefault()  
-    window.location.href = `mailto:julianarce1101@gmail.com?subject=Envio%20de%20formulario%20Contact%20Me%20portafolio%20Julian%20Arce&body=Nombre%3A${name}%0AMensaje%3A${message}`
+    if (name && message) {
+      window.location.href = `mailto:julianarce1101@gmail.com?subject=Envio%20de%20formulario%20Contact%20Me%20portafolio%20Julian%20Arce&body=Nombre%3A${name}%0AMensaje%3A${message}`
+    }
   }
   return (
     <div class="container max-w-full mx-auto pt-24 px-6">
