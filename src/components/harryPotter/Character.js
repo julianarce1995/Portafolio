@@ -2,7 +2,6 @@ import React from "react";
 import { selectHarryPotterData } from "../../store/selector/harryPotterSelector";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-//import { useRouter } from 'next/navigation'
 import { harryPotterApi } from "../../store/slices/harryPotterSlice";
 import { hideSpinner, showSpinner } from "@/store/slices/loaderSlice";
 
