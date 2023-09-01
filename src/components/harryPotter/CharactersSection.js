@@ -1,7 +1,8 @@
 "use client";
 
+import React from "react";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function CharactersSection({ results, startPage, endPage }) {
   const [resultsSlice, setResultsSlice] = useState([]);
@@ -11,12 +12,12 @@ export default function CharactersSection({ results, startPage, endPage }) {
   }, [results, endPage]);
 
   return (
-    <div className="flex flex-col items-center w-full h-[75%]">
+    <div className="flex flex-col w-full h-[75%] items-center">
       {resultsSlice.length > 0 ? (
         resultsSlice.map((item) => (
           <div
             key={item.id}
-            className="flex mb-8 max-w-sm bg-white p-0 lg:w-2/4 rounded-xl shadow-2xl shadow-gray-600"
+            className="flex max-w-sm mb-8 lg:w-2/4 rounded-xl shadow-2xl shadow-gray-600"
           >
             <div className="w-full h-full">
               {item.image ? (
@@ -29,7 +30,7 @@ export default function CharactersSection({ results, startPage, endPage }) {
               )}
             </div>
             <div className="w-full flex flex-col justify-around">
-              <span className="text-center capitalize text-xl font-bold text-gray-700 mt-3 me-4">
+              <span className="text-center capitalize text-xl font-bold text-gray-700">
                 {item.name}
               </span>
               <div className="flex flex-col mx-4 my-2">

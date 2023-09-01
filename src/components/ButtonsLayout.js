@@ -1,19 +1,18 @@
-'use client'
+"use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
-export default function ButtonsLayout({currentPage}) {   
-  const [buttonPath, setButtonPath] = useState('')
-  const [buttonName, setButtonName] = useState('')
+export default function ButtonsLayout({ currentPage }) {
+  const [buttonPath, setButtonPath] = useState("");
+  const [buttonName, setButtonName] = useState("");
 
-  useEffect(()=>{
+  useEffect(() => {
     if (currentPage.includes("harry_potter")) {
-      setButtonPath("/harry_potter")
-      setButtonName("Harry Potter Api")
+      setButtonPath("/harry_potter");
+      setButtonName("Harry Potter Api");
     }
-  },[currentPage])
-
+  }, [currentPage]);
 
   return (
     <>

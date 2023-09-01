@@ -1,57 +1,56 @@
-"use client"
+"use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 
 export default function ContactForm() {
-  const [name, setName] = useState('')
-  const [message, setMessage] = useState('')
+  const [name, setName] = useState("");
+  const [message, setMessage] = useState("");
 
   function sendEmail(e) {
-    e.preventDefault()  
+    e.preventDefault();
     if (name && message) {
-      window.location.href = `mailto:julianarce1101@gmail.com?subject=Envio%20de%20formulario%20Contact%20Me%20portafolio%20Julian%20Arce&body=Nombre%3A${name}%0AMensaje%3A${message}`
+      window.location.href = `mailto:julianarce1101@gmail.com?subject=Envio%20de%20formulario%20Contact%20Me%20portafolio%20Julian%20Arce&body=Nombre%3A${name}%0AMensaje%3A${message}`;
     }
   }
   return (
-    <div class="container max-w-full mx-auto pt-24 px-6">
-      <div class="max-w-sm mx-auto px-6">
-        <div class="relative flex flex-wrap">
-          <div class="w-full relative">
-            <div class="md:mt-6">
-              <h2 class="text-center text-4xl font-semibold text-gray-700">Contact me</h2>
-              <form class="mt-2" type="submit">
-                <div class="mx-auto max-w-lg ">
-                  <div class="py-1">
-                    <span class="px-1 text-sm text-black">Name</span>
+    <div className="container max-w-full mx-auto pt-32 px-6">
+      <div className="max-w-sm mx-auto px-6">
+        <div className="relative flex flex-wrap">
+          <div className="w-full relative">
+            <div className="md:mt-6">
+              <h2 className="text-center text-4xl font-semibold text-gray-700">
+                Contact me
+              </h2>
+              <form className="mt-2" type="submit">
+                <div className="mx-auto max-w-lg ">
+                  <div className="py-1">
+                    <span className="px-1 text-sm text-black">Name</span>
                     <input
                       placeholder="Your name here"
                       type="text"
                       name="name"
-                      onChange={e => setName(e.target.value)}
-                      class="text-md text-black block px-3 py-2 rounded-lg w-full
+                      onChange={(e) => setName(e.target.value)}
+                      className="text-md text-black block px-3 py-2 rounded-lg w-full
                 bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-teal-500 focus:outline-none"
                     />
                   </div>
-                  <div class="py-1">
-                    <label
-                      for="message"
-                      class="block mb-2 text-sm font-medium text-black"
-                    >
+                  <div className="py-1">
+                    <label className="block mb-2 text-sm font-medium text-black">
                       Your message
                     </label>
                     <textarea
                       id="message"
                       name="message"
-                      onChange={e => setMessage(e.target.value)}
+                      onChange={(e) => setMessage(e.target.value)}
                       rows="4"
-                      class="text-md block text-black px-3 py-2 rounded-lg w-full
+                      className="text-md block text-black px-3 py-2 rounded-lg w-full
                       bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-teal-500 focus:outline-none"
                       placeholder="Write your message here..."
                     ></textarea>
                   </div>
                   <button
-                  onClick={sendEmail}
-                    class="mt-8 text-lg font-semibold
+                    onClick={sendEmail}
+                    className="mt-8 text-lg font-semibold
             bg-gray-800 w-full text-white rounded-lg
             px-6 py-3 block shadow-xl hover:text-white hover:bg-black"
                   >
@@ -63,6 +62,7 @@ export default function ContactForm() {
                 <a
                   href="https://linkedin.com/in/julian-david-arce-araujo-3b1385248"
                   target="_blank"
+                  rel="noopener noreferrer"
                   type="button"
                   className="m-1 h-12 w-12 rounded-full border-2 border-gray-800 uppercase leading-normal text-black transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0"
                 >
@@ -79,6 +79,7 @@ export default function ContactForm() {
                 <a
                   href="https://github.com/julianarce1995"
                   target="_blank"
+                  rel="noopener noreferrer"
                   type="button"
                   className="m-1 h-12 w-12 rounded-full border-2 border-gray-800 uppercase leading-normal text-black transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0"
                 >

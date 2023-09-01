@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectHarryPotterData } from "../../store/selector/harryPotterSelector";
 import { useEffect, useState } from "react";
@@ -14,7 +15,6 @@ export default function HarryPotterPage() {
   const [characterInput, setCharacterInput] = useState("");
   const [startPage, setStartPage] = useState(0);
   const [endPage, setEndPage] = useState(2);
-  const [messageResult, setMessageResult] = useState(false);
 
   async function fetchCharacters() {
     dispatch(showSpinner());
@@ -38,14 +38,13 @@ export default function HarryPotterPage() {
         item.name.toLowerCase().includes(characterInput.toLowerCase())
     );
     setResults(filteredResults);
-    setMessageResult(false);
+
     setStartPage(0);
     setEndPage(2);
   };
 
   function searchCharacter(event) {
     event.preventDefault();
-    setMessageResult(true);
   }
 
   function prevPage() {
@@ -66,7 +65,7 @@ export default function HarryPotterPage() {
         setStartPage((prevCount) => prevCount + 2);
         setEndPage((prevCount) => prevCount + 2);
       }
-    }  
+    }
   }
 
   useEffect(() => {
@@ -77,19 +76,19 @@ export default function HarryPotterPage() {
 
   return (
     <div className="flex justify-center min-h-screen">
-      <div className="w-full flex flex-col items-center bg-gray-50 drop-shadow-2xl shadow-blue-500/50 mt-16">
-        <form onSubmit={searchCharacter} className="m-5 md:w-1/2">
-          <div className="flex items-center justify-between border-b border-teal-500 py-2">
+      <div className="w-full flex flex-col items-center mt-16">
+        <form onSubmit={searchCharacter} className="md:w-1/2 m-5">
+          <div className="flex items-center justify-between py-2 border-b border-teal-500">
             <input
               type="text"
               value={characterInput}
               onChange={handleInputChange}
-              className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
-              placeholder="Escribe aquí"
+              className="w-full mr-3 py-1 px-2 text-gray-700 leading-tight focus:outline-none"
+              placeholder="Search here"
             />
             <button
               type="submit"
-              className="m-3 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+              className="m-3 py-1 px-2 text-sm border-4 border-teal-500 bg-teal-500 rounded hover:bg-teal-700 hover:border-teal-700"
             >
               Search
             </button>

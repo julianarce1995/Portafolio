@@ -1,11 +1,12 @@
 import Link from "next/link";
+import React from "react";
 
 export default function Footer() {
   return (
     <footer className="flex bg-gray-800 pb-4 z-10">
       <div className="w-full mx-10 py-8">
         <div className="sm:flex sm:items-center sm:justify-between">
-          <h5 className="text-3xl text-white font- sans font-bold text-gray-500">
+          <h5 className="text-3xl text-white font-sans font-bold text-gray-500">
             Julian David Arce Araujo
           </h5>
           <ul className="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0">
