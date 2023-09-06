@@ -49,7 +49,7 @@ export default function Layout({ children }) {
             href="/"
             className="text-white ms-6 py-2 text-2xl font-extrabold"
           >
-            Julian D. Arce
+            <h1>Julian D. Arce</h1>
             <p className="text-xs font-medium text-center">
               | Software Developer |
             </p>
