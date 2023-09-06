@@ -13,7 +13,7 @@ export default function ContactForm() {
     }
   }
   return (
-    <div id="contact" className="container max-w-full mx-auto pt-32 px-6">
+    <div id="contact" className="container max-w-full mx-auto pt-32 pb-8 px-6">
       <div className="max-w-sm mx-auto px-6">
         <div className="relative flex flex-wrap">
           <div className="w-full relative">
@@ -23,7 +23,7 @@ export default function ContactForm() {
               </h2>
               <form className="mt-2" type="submit">
                 <div className="mx-auto max-w-lg ">
-                  <div className="py-1">
+                  <div className="py-4">
                     <span className="px-1 text-sm text-black">Name</span>
                     <input
                       placeholder="Your name here"
@@ -34,7 +34,7 @@ export default function ContactForm() {
                 bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-teal-500 focus:outline-none"
                     />
                   </div>
-                  <div className="py-1">
+                  <div className="py-4">
                     <label className="block mb-2 text-sm font-medium text-black">
                       Your message
                     </label>
@@ -58,7 +58,7 @@ export default function ContactForm() {
                   </button>
                 </div>
               </form>
-              <div className="my-8 flex justify-center">
+              <div className="my-16 flex justify-center">
                 <a
                   href="https://linkedin.com/in/julian-david-arce-araujo-3b1385248"
                   target="_blank"

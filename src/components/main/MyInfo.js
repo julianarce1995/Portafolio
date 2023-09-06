@@ -9,7 +9,7 @@ export default function MyInfo() {
           alt="julian-arce-image"
         />
         <div className="text-center mt-1 lg:mx-10">
-          <h2 className="mb-4 p-2 text-3xl font-extrabold text-gray-900 text-transparent bg-clip-text md:text-5xl lg:text-6xl bg-gradient-to-r to-emerald-600 from-sky-400">
+          <h2 className="mb-4 p-2 text-3xl font-extrabold text-gray-900 text-transparent bg-clip-text md:text-5xl lg:text-6xl bg-gradient-to-r to-sky-400 from-emerald-600">
             Julian David Arce
           </h2>
           <p className="text-xl p-8">

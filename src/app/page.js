@@ -12,9 +12,9 @@ export default function Home() {
       <MyInfo />
       <CarouselSkills />
       <hr className="w-1/2 h-1 mx-auto my-4 bg-gray-300 border-0 rounded md:my-10 dark:bg-gray-700" />
-      <ContactForm />
-      <hr className="w-1/2 h-1 mx-auto my-4 bg-gray-300 border-0 rounded md:my-10 dark:bg-gray-700" />
       <AppInfo />
+      <hr className="w-1/2 h-1 mx-auto my-4 bg-gray-300 border-0 rounded md:my-10 dark:bg-gray-700" />
+      <ContactForm />
       <hr className="w-1/2 h-1 mx-auto my-4 bg-gray-300 border-0 rounded md:my-10 dark:bg-gray-700" />
     </div>
   );

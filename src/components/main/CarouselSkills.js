@@ -68,7 +68,7 @@ export default function CarouselSkills() {
   return (
     <div
       id="carouselSkills"
-      className="w-full bg-teal-500 text-slate-50 p-4 shadow-[rgba(0,_0,_0,_0.24)_10px_10px_25px]"
+      className="w-full text-slate-50 p-4 shadow-xl bg-gradient-to-r to-sky-400 from-emerald-600"
     >
       <h2 className="text-center text-4xl font-bold">Skills</h2>
       <div className="flex items-center justify-between">
