@@ -11,6 +11,9 @@ export default function ButtonsLayout({ currentPage }) {
     if (currentPage.includes("harry_potter")) {
       setButtonPath("/harry_potter");
       setButtonName("Harry Potter Api");
+    } else {
+      setButtonPath("/");
+      setButtonName("Portafolio");
     }
   }, [currentPage]);
 
@@ -18,7 +21,7 @@ export default function ButtonsLayout({ currentPage }) {
     <>
       <Link
         href={buttonPath}
-        className="bg-gray-900 text-white rounded-md me-6 px-3 py-2 text-sm font-medium"
+        className="w-40 text-center bg-gray-900 text-white rounded-md me-6 px-3 py-2 text-sm font-medium"
       >
         {buttonName}
       </Link>

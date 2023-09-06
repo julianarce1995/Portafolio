@@ -55,9 +55,35 @@ export default function Layout({ children }) {
             </p>
           </Link>
         </div>
-        <div
-          className={currentPage === "/" ? "hidden" : "flex h-16 items-center"}
-        >
+        <div className="flex items-center w-1/4">
+          <ul className="flex justify-between w-full">
+            <li className="group transition-transform duration-500 ease-in hover:-translate-y-0 hover:scale-110">
+              <Link href="/harry_potter">
+                Harry Potter API
+                <span className="block max-w-0 group-hover:max-w-full transition-all duration-1000 h-1 bg-teal-500 rounded-full"></span>
+              </Link>
+            </li>
+            <li className="group transition-transform duration-500 ease-in hover:-translate-y-0 hover:scale-110">
+              <Link href="/">
+                Game Box
+                <span className="block max-w-0 group-hover:max-w-full transition-all duration-1000 h-1 bg-teal-500 rounded-full"></span>
+              </Link>
+            </li>
+            <li className="group transition-transform duration-500 ease-in hover:-translate-y-0 hover:scale-110">
+              <Link href="/">
+                Home
+                <span className="block max-w-0 group-hover:max-w-full transition-all duration-1000 h-1 bg-teal-500 rounded-full"></span>
+              </Link>
+            </li>
+            <li className="group transition-transform duration-500 ease-in hover:-translate-y-0 hover:scale-110">
+              <Link href="#contact">
+                Contact
+                <span className="block max-w-0 group-hover:max-w-full transition-all duration-1000 h-1 bg-teal-500 rounded-full"></span>
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <div className="flex h-16 items-center">
           <ButtonsLayout currentPage={currentPage} />
         </div>
       </nav>
@@ -69,7 +95,7 @@ export default function Layout({ children }) {
               onClick={handleNavFooter}
               className={
                 iconNavFooter
-                  ? "hidden w-10 lg:flex justify-center pt-3 border-1"
+                  ? "w-10 lg:flex justify-center pt-3 border-1"
                   : "hidden"
               }
             >

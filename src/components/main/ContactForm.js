@@ -13,7 +13,7 @@ export default function ContactForm() {
     }
   }
   return (
-    <div className="container max-w-full mx-auto pt-32 px-6">
+    <div id="contact" className="container max-w-full mx-auto pt-32 px-6">
       <div className="max-w-sm mx-auto px-6">
         <div className="relative flex flex-wrap">
           <div className="w-full relative">

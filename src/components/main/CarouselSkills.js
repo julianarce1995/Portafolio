@@ -97,7 +97,7 @@ export default function CarouselSkills() {
         >
           {resultsSlice.map((item) => (
             <div
-              className="transition-transform mx-6 w-28 sm:col-span-2 duration-500 ease-in hover:-translate-y-0 hover:scale-110 p-2"
+              className="transition-transform group mx-6 w-28 sm:col-span-2 duration-500 ease-in hover:-translate-y-0 hover:scale-110 p-2"
               key={item}
             >
               <img
@@ -107,6 +107,7 @@ export default function CarouselSkills() {
               />
               <h3 className="text-center font-bold text-md my-4 capitalize">
                 {item}
+                <span className="block max-w-0 group-hover:max-w-full transition-all duration-700 h-1 bg-white rounded-full"></span>
               </h3>
             </div>
           ))}
