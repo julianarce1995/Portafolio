@@ -1,139 +1,118 @@
 import React, { useEffect, useState } from "react";
 
 export default function CarouselSkills() {
-  const [startImg, setStartImg] = useState(0);
-  const [fade, setFade] = useState(true);
-  const [endImg, setEndImg] = useState(5);
-  const [resultsSlice, setResultsSlice] = useState([]);
+  const [positionStr, setPositionStr] = useState("-translate-x-[0%]");
   const imagesSkills = [
     "html",
     "css",
     "javascript",
     "typescript",
     "python",
-    "vue",
-    "django",
-    "react",
     "next",
+    "react",
+    "django",
     "nuxt",
+    "vue",
     "docker",
-    "visual_studio",
+    "visual_Studio",
+    "jira",
     "git",
     "postman",
-    "jira",
     "bootstrap",
     "tailwind",
     "sass",
+    "font_Awesome",
     "mui",
-    "font_awesome",
-    "redux",
-    "sql",
-    "mongo",
-    "node",
     "jquery",
+    "node",
+    "mongo",
+    "sql",
+    "redux",
   ];
   function prevSection() {
-    setFade(true);
-    if (startImg !== 0) {
-      setStartImg((prevCount) => prevCount - 5);
-      setEndImg((prevCount) => prevCount - 5);
-    } else {
-      setStartImg(imagesSkills.length - 5);
-      setEndImg(imagesSkills.length);
+    if (positionStr == "-translate-x-[100%]") {
+      setPositionStr("-translate-x-[0%]");
+    } else if (positionStr == "-translate-x-[200%]") {
+      setPositionStr("-translate-x-[100%]");
+    } else if (positionStr == "-translate-x-[300%]") {
+      setPositionStr("-translate-x-[200%]");
+    } else if (positionStr == "-translate-x-[400%]") {
+      setPositionStr("-translate-x-[300%]");
     }
   }
 
   function nextSection() {
-    setFade(true);
-    if (imagesSkills.length > endImg) {
-      setStartImg((prevCount) => prevCount + 5);
-      setEndImg((prevCount) => prevCount + 5);
-    } else {
-      setStartImg(0);
-      setEndImg(5);
+    if (positionStr == "-translate-x-[0%]") {
+      setPositionStr("-translate-x-[100%]");
+    } else if (positionStr == "-translate-x-[100%]") {
+      setPositionStr("-translate-x-[200%]");
+    } else if (positionStr == "-translate-x-[200%]") {
+      setPositionStr("-translate-x-[300%]");
+    } else if (positionStr == "-translate-x-[300%]") {
+      setPositionStr("-translate-x-[400%]");
     }
   }
 
-  function trigger() {
-    setTimeout(() => {
-      setResultsSlice(imagesSkills.slice(startImg, endImg));
-      setFade(!fade);
-    }, 600);
-  }
-
-  useEffect(() => {
-    trigger();
-  }, [endImg]);
-
   return (
-    <div
-      id="carouselSkills"
-      className="w-full text-slate-50 p-4 shadow-xl bg-gradient-to-r to-sky-400 from-emerald-600"
-    >
-      <h2 className="text-center text-4xl font-bold">Skills</h2>
-      <div className="flex items-center justify-between">
-        <button
-          type="button"
-          onClick={prevSection}
-          className="flex items-center justify-center h-full px-4"
-        >
-          <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30">
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 6 10">
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M5 1 1 5l4 4"
-              />
-            </svg>
-            <span className="sr-only">Previous</span>
-          </span>
-        </button>
-        <div
-          className={`w-full transition-transform ease-in duration-500 ${
-            fade ? "scale-50 -translate-y-0" : ""
-          } grid grid-cols-1 place-items-center md:flex md:flex-row mt-5 items-center justify-between overflow-hidden rounded-lg`}
-        >
-          {resultsSlice.map((item) => (
-            <div
-              className="transition-transform group mx-6 w-28 sm:col-span-2 duration-500 ease-in hover:-translate-y-0 hover:scale-110 p-2"
-              key={item}
-            >
-              <img
-                className="w-28 h-28"
-                src={"skills/" + item + ".svg"}
-                alt="julian-arce-image"
-              />
-              <h3 className="text-center font-bold text-md my-4 capitalize">
-                {item}
-                <span className="block max-w-0 group-hover:max-w-full transition-all duration-700 h-1 bg-white rounded-full"></span>
-              </h3>
+    <div className="shadow-xl bg-gradient-to-r to-sky-400 from-emerald-500">
+      <h2 className="text-center text-xl md:text-4xl font-bold mt-4 tracking-[0.1rem]">
+        Skills
+      </h2>
+      <div className="w-full text-slate-50 md:p-8">
+        <div className="flex items-center">
+          <button type="button" onClick={prevSection} className="flex">
+            <span className="inline-flex items-center justify-center">
+              <svg className="w-5" fill="none" viewBox="0 0 6 10">
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M5 1 1 5l4 4"
+                />
+              </svg>
+              <span className="sr-only">Previous</span>
+            </span>
+          </button>
+          <div className="overflow-hidden w-full">
+            <div className="flex">
+              <div
+                className={`flex flex-nowrap w-full transition-transform duration-1000 ${positionStr}`}
+              >
+                {imagesSkills.map((item) => (
+                  <div
+                    className="flex flex-col flex-nowrap p-2 min-w-[20%] items-center transition-transform group duration-500 ease-in hover:-translate-y-0 hover:scale-110"
+                    key={item}
+                  >
+                    <img
+                      className="md:w-28 md:h-28 w-16 h-16"
+                      src={"skills/" + item + ".svg"}
+                      alt="julian-arce-image"
+                    />
+                    <h3 className="text-center my-2 md:font-bold md:text-xl text-xs/[4px] capitalize">
+                      {item}
+                      <span className="block max-w-0 group-hover:max-w-full my-2 transition-all duration-700 h-1 bg-white rounded-full"></span>
+                    </h3>
+                  </div>
+                ))}
+              </div>
             </div>
-          ))}
+          </div>
+          <button type="button" onClick={nextSection} className="flex">
+            <span className="inline-flex items-center justify-center">
+              <svg className="w-5" fill="none" viewBox="0 0 6 10">
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="m1 9 4-4-4-4"
+                />
+              </svg>
+              <span className="sr-only">Next</span>
+            </span>
+          </button>
         </div>
-        <button
-          type="button"
-          onClick={nextSection}
-          className="flex items-center justify-center h-full px-4 focus:outline-none"
-        >
-          <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
-            <svg
-              className="w-4 h-4 text-white dark:text-gray-800"
-              fill="none"
-              viewBox="0 0 6 10"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="m1 9 4-4-4-4"
-              />
-            </svg>
-            <span className="sr-only">Next</span>
-          </span>
-        </button>
       </div>
     </div>
   );

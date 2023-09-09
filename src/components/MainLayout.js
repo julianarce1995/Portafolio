@@ -8,25 +8,17 @@ import { usePathname } from "next/navigation";
 import ButtonsLayout from "./ButtonsLayout";
 
 export default function Layout({ children }) {
-  const [iconNavFooter, setIconNavFooter] = useState(true);
-  const [scrollPosition, setScrollPosition] = useState(0);
   const currentPage = usePathname();
   const mainRef = useRef(null);
   const footerRef = useRef(null);
 
+  /*
+  const [iconNavFooter, setIconNavFooter] = useState(true);
+  const [scrollPosition, setScrollPosition] = useState(0);
+
   const scrollToComponent = (ref) => {
     ref.current.scrollIntoView({ behavior: "smooth" });
   };
-
-  function handleNavFooter() {
-    if (iconNavFooter) {
-      scrollToComponent(footerRef);
-      setIconNavFooter(true);
-    } else {
-      scrollToComponent(mainRef);
-      setIconNavFooter(false);
-    }
-  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,6 +32,7 @@ export default function Layout({ children }) {
     };
     window.addEventListener("scroll", handleScroll);
   }, [scrollPosition]);
+  */
 
   return (
     <div id="navbar">
@@ -125,33 +118,6 @@ export default function Layout({ children }) {
       </nav>
       <main className="bg-white text-white">
         <div ref={mainRef}>{children}</div>
-        <div className="fixed bottom-4 left-40 right-40 z-10">
-          <div className="w-full flex justify-center">
-            <button
-              onClick={handleNavFooter}
-              className={
-                iconNavFooter
-                  ? "w-10 lg:flex justify-center pt-3 border-1"
-                  : "hidden"
-              }
-            >
-              <svg
-                className="w-8 text-teal-500 sm-hidden"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 14 8"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="m1 1 5.326 5.7a.909.909 0 0 0 1.348 0L13 1"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
       </main>
       <div ref={footerRef}>
         <Footer />

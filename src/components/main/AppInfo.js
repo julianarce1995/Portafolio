@@ -3,7 +3,7 @@ import React from "react";
 export default function AppInfo() {
   return (
     <div id="about" className="text-black flex flex-col items-center pt-32 m-8">
-      <h2 className="mb-4 p-2 text-3xl font-extrabold text-gray-900 text-transparent bg-clip-text bg-gradient-to-r to-sky-400 from-emerald-600">
+      <h2 className="mb-4 p-2 text-4xl font-extrabold text-gray-900 text-transparent bg-clip-text bg-gradient-to-r to-sky-400 from-emerald-400">
         Recursos y Tecnologías Utilizadas en Este Sitio Web
       </h2>
       <div className="container grid md:grid-cols-3 grid-cols-1 gap-4">
