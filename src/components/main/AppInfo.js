@@ -51,7 +51,14 @@ export default function AppInfo() {
             bibliotecas o frameworks como React o Angular.
           </p>
         </div>
-        <div className="md:col-start-2 md:col-span-2 col-span-1 rounded-2xl border-2 p-4">
+        <div className="flex items-center justify-center col-span-1">
+          <img
+            className="w-40 h-40 sm:w-44 sm:h-44 rounded-full shadow-2xl shadow-slate-700"
+            src="../../julianarce3.jpg"
+            alt="julian-arce-image"
+          />
+        </div>
+        <div className="md:col-span-2 col-span-1 rounded-2xl border-2 p-4">
           <h3 className="font-bold text-2xl my-2 text-center">Herramientas:</h3>
           <h4 className="text-md font-bold">ESLint:</h4>
           <p>

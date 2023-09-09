@@ -4,8 +4,8 @@ export default function MyInfo() {
     <div className="sm:w-full text-black flex justify-center mt-28 mb-16 lg:px-10">
       <div className="w-3/4 md:w-full flex flex-col md:flex-row items-center my-4">
         <img
-          className="w-40 h-40 m-4 my-10 mx-20 rounded-full shadow-2xl shadow-slate-700 border-2 border-slate-700"
-          src="../../julianarce3.jpg"
+          className="w-40 h-40 sm:w-48 sm:h-48 mx-16 rounded-full shadow-2xl shadow-slate-700"
+          src="../../JulianArce.jpeg"
           alt="julian-arce-image"
         />
         <div className="text-center mt-1 lg:mx-10">
