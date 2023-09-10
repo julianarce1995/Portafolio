@@ -3,7 +3,7 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
-export default function ButtonsLayout({ currentPage }) {
+export default function ButtonsNav({ currentPage }) {
   const [buttonPath, setButtonPath] = useState("");
   const [buttonName, setButtonName] = useState("");
 

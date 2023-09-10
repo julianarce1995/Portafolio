@@ -1,16 +1,34 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
-import Footer from "./Footer";
+import { useRef } from "react";
+import Footer from "../Footer";
 import { usePathname } from "next/navigation";
-import ButtonsLayout from "./ButtonsLayout";
+import MenuPortafolio from "./MenuPortafolio";
 
 export default function Layout({ children }) {
-  const currentPage = usePathname();
+  const [showMenu, setShowMenu] = useState(false);
   const mainRef = useRef(null);
-  const footerRef = useRef(null);
+  const currentPage = usePathname();
+
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
+
+  useEffect(() => {
+    const handleClickOutsideMenu = () => {
+      if (showMenu) {
+        setShowMenu(false);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutsideMenu);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutsideMenu);
+    };
+  }, [showMenu]);
 
   /*
   const [iconNavFooter, setIconNavFooter] = useState(true);
@@ -56,7 +74,7 @@ export default function Layout({ children }) {
           }
         >
           <ul className="flex justify-between w-full">
-            <li className="group transition-transform duration-500 ease-in hover:-translate-y-0 hover:scale-110 p-2">
+            <li className="group transition-transform duration-500 ease-in hover:-translate-y-0 hover:scale-110 p-2 rounded-md active:bg-gray-700 active:ring-2 active:ring-gray-500 active:ring-opacity-50">
               <Link
                 href="/"
                 onClick={(e) => {
@@ -70,7 +88,7 @@ export default function Layout({ children }) {
                 <span className="block max-w-0 group-hover:max-w-full transition-all duration-1000 h-1 bg-teal-500 rounded-full"></span>
               </Link>
             </li>
-            <li className="group transition-transform duration-500 ease-in hover:-translate-y-0 hover:scale-110 p-2">
+            <li className="group transition-transform duration-500 ease-in hover:-translate-y-0 hover:scale-110 p-2 rounded-md active:bg-gray-700 active:ring-2 active:ring-gray-500 active:ring-opacity-50">
               <Link
                 href="/#about"
                 onClick={(e) => {
@@ -84,7 +102,7 @@ export default function Layout({ children }) {
                 <span className="block max-w-0 group-hover:max-w-full transition-all duration-1000 h-1 bg-teal-500 rounded-full"></span>
               </Link>
             </li>
-            <li className="group transition-transform duration-500 ease-in hover:-translate-y-0 hover:scale-110 p-2">
+            <li className="group transition-transform duration-500 ease-in hover:-translate-y-0 hover:scale-110 p-2 rounded-md active:bg-gray-700 active:ring-2 active:ring-gray-500 active:ring-opacity-50">
               <Link
                 href="#contact"
                 scroll={true}
@@ -99,27 +117,34 @@ export default function Layout({ children }) {
                 <span className="block max-w-0 group-hover:max-w-full transition-all duration-1000 h-1 bg-teal-500 rounded-full"></span>
               </Link>
             </li>
-            <li className="group transition-transform duration-500 ease-in hover:-translate-y-0 hover:scale-110 p-2">
-              <span
-                onClick={() => {
-                  footerRef.current.scrollIntoView({ behavior: "smooth" });
-                }}
-                className="cursor-pointer"
-              >
-                Pages
-                <span className="block max-w-0 group-hover:max-w-full transition-all duration-1000 h-1 bg-teal-500 rounded-full"></span>
-              </span>
-            </li>
           </ul>
         </div>
-        <div className="flex h-16 items-center md:flex hidden">
-          <ButtonsLayout currentPage={currentPage} />
-        </div>
+        <button
+          type="button"
+          className="flex items-center p-2 rounded-md me-6 active:bg-gray-700 active:ring-2 active:ring-gray-500 active:ring-opacity-50"
+          onClick={toggleMenu}
+        >
+          <span className="sr-only">Open sidebar</span>
+          <svg
+            className="w-10 h-10"
+            aria-hidden="true"
+            fill="#ffffff"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              clipRule="evenodd"
+              fillRule="evenodd"
+              d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
+            ></path>
+          </svg>
+        </button>
       </nav>
+      <MenuPortafolio showMenu={showMenu} />
       <main className="bg-white text-white">
         <div ref={mainRef}>{children}</div>
       </main>
-      <div ref={footerRef}>
+      <div id="footer">
         <Footer />
       </div>
     </div>

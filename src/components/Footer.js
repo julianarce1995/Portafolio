@@ -5,36 +5,17 @@ export default function Footer() {
   return (
     <footer className="flex bg-gray-800 pb-4 z-10">
       <div className="w-full py-4 text-gray-500">
-        <div className="lg:flex lg:items-center lg:justify-around">
+        <div className="lg:flex lg:items-center lg:justify-between mx-12">
           <h5 className="text-3xl font-sans font-bold pb-2 lg:flex hidden">
             Julian David Arce Araujo
           </h5>
-          <ul className="flex flex-wrap items-center text-sm font-medium lg:mx-4 lg:py-0 py-2">
-            <li>
-              <Link
-                href="/game_boxes"
-                className="mr-4 hover:underline underline-offset-8 md:mr-6 text-xl "
-              >
-                Game Boxes
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/harry_potter"
-                className="mr-4 hover:underline underline-offset-8 md:mr-6 text-xl "
-              >
-                Harry Potter API
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/"
-                className="mr-4 hover:underline underline-offset-8 md:mr-6 text-xl "
-              >
-                Portafolio
-              </Link>
-            </li>
-          </ul>
+          <span className="block text-sm sm:text-end me-8 mt-4">
+            © 2023{" "}
+            <Link href="/" className="hover:underline underline-offset-4">
+              julianarceportafolio
+            </Link>
+            . All Rights Reserved.
+          </span>
         </div>
         <hr className="border-gray-200 w-full" />
         <h6 className="mb-4 flex justify-center font-semibold uppercase text-center mt-4">
@@ -110,13 +91,6 @@ export default function Footer() {
             </a>
           </p>
         </div>
-        <span className="block text-sm sm:text-end me-8 mt-4">
-          © 2023{" "}
-          <Link href="/" className="hover:underline underline-offset-4">
-            julianarceportafolio
-          </Link>
-          . All Rights Reserved.
-        </span>
       </div>
     </footer>
   );
