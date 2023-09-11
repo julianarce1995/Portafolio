@@ -11,25 +11,22 @@ import { harryPotterApi } from "../../store/slices/harryPotterSlice";
 export default function HarryPotterPage() {
   const dispatch = useDispatch();
   const data = useSelector(selectHarryPotterData);
+  const [positionStr, setPositionStr] = useState("-translate-x-[0%]");
   const [results, setResults] = useState([]);
   const [characterInput, setCharacterInput] = useState("");
-  const [startPage, setStartPage] = useState(0);
-  const [endPage, setEndPage] = useState(2);
 
   async function fetchCharacters() {
     dispatch(showSpinner());
     await dispatch(harryPotterApi())
       .then(() => {
         dispatch(hideSpinner());
-        setStartPage(0);
-        setEndPage(2);
       })
       .catch(() => {
         dispatch(hideSpinner());
       });
   }
 
-  const handleInputChange = (event) => {
+  /*const handleInputChange = (event) => {
     event.preventDefault();
     setCharacterInput(event.target.value);
     const filteredResults = data.filter(
@@ -38,33 +35,33 @@ export default function HarryPotterPage() {
         item.name.toLowerCase().includes(characterInput.toLowerCase())
     );
     setResults(filteredResults);
-
-    setStartPage(0);
-    setEndPage(2);
   };
 
   function searchCharacter(event) {
     event.preventDefault();
-  }
+  }*/
 
-  function prevPage() {
-    if (startPage !== 0) {
-      setStartPage((prevCount) => prevCount - 2);
-      setEndPage((prevCount) => prevCount - 2);
+  function prevSection() {
+    if (positionStr === "-translate-x-[100%]") {
+      setPositionStr("-translate-x-[0%]");
+    } else if (positionStr === "-translate-x-[200%]") {
+      setPositionStr("-translate-x-[100%]");
+    } else if (positionStr === "-translate-x-[300%]") {
+      setPositionStr("-translate-x-[200%]");
+    } else if (positionStr === "-translate-x-[400%]") {
+      setPositionStr("-translate-x-[300%]");
     }
   }
 
-  function nextPage() {
-    if (results.length > 0) {
-      if (results.length > endPage) {
-        setStartPage((prevCount) => prevCount + 2);
-        setEndPage((prevCount) => prevCount + 2);
-      }
-    } else {
-      if (data.length > endPage) {
-        setStartPage((prevCount) => prevCount + 2);
-        setEndPage((prevCount) => prevCount + 2);
-      }
+  function nextSection() {
+    if (positionStr === "-translate-x-[0%]") {
+      setPositionStr("-translate-x-[100%]");
+    } else if (positionStr === "-translate-x-[100%]") {
+      setPositionStr("-translate-x-[200%]");
+    } else if (positionStr === "-translate-x-[200%]") {
+      setPositionStr("-translate-x-[300%]");
+    } else if (positionStr === "-translate-x-[300%]") {
+      setPositionStr("-translate-x-[400%]");
     }
   }
 
@@ -76,8 +73,8 @@ export default function HarryPotterPage() {
 
   return (
     <div className="flex justify-center min-h-screen">
-      <div className="w-full flex flex-col items-center mt-16">
-        <form onSubmit={searchCharacter} className="md:w-1/2 m-5">
+      <div className="w-full flex flex-col items-center justify-center mt-16">
+        {/*<form onSubmit={searchCharacter} className="md:w-1/2 m-5">
           <div className="flex items-center justify-between py-2 border-b border-teal-500">
             <input
               type="text"
@@ -93,24 +90,39 @@ export default function HarryPotterPage() {
               Search
             </button>
           </div>
-        </form>
-        <CharacterSection
-          results={results.length > 0 ? results : data}
-          endPage={endPage}
-          startPage={startPage}
-        />
-        <div className="flex w-full justify-around">
-          <button
-            onClick={prevPage}
-            className="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-teal-500 rounded-lg hover:bg-teal-700 focus:ring-4 focus:outline-None focus:ring-teal-300"
-          >
-            Prev. Page
+        </form>*/}
+        <div className="flex justify-center items-center w-full">
+          <button type="button" onClick={prevSection} className="flex m-4">
+            <span className="inline-flex items-center justify-center">
+              <svg className="w-5" fill="none" viewBox="0 0 6 10">
+                <path
+                  stroke="#000000"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M5 1 1 5l4 4"
+                />
+              </svg>
+              <span className="sr-only">Previous</span>
+            </span>
           </button>
-          <button
-            onClick={nextPage}
-            className="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-teal-500 rounded-lg hover:bg-teal-700 focus:ring-4 focus:outline-None focus:ring-teal-300"
-          >
-            Next Page
+          <CharacterSection
+            results={results.length > 0 ? results : data}
+            positionStr={positionStr}
+          />
+          <button type="button" onClick={nextSection} className="flex m-4">
+            <span className="inline-flex items-center justify-center">
+              <svg className="w-5" fill="none" viewBox="0 0 6 10">
+                <path
+                  stroke="#000000"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="m1 9 4-4-4-4"
+                />
+              </svg>
+              <span className="sr-only">Next</span>
+            </span>
           </button>
         </div>
       </div>

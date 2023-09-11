@@ -30,25 +30,25 @@ export default function CarouselSkills() {
     "redux",
   ];
   function prevSection() {
-    if (positionStr == "-translate-x-[100%]") {
+    if (positionStr === "-translate-x-[100%]") {
       setPositionStr("-translate-x-[0%]");
-    } else if (positionStr == "-translate-x-[200%]") {
+    } else if (positionStr === "-translate-x-[200%]") {
       setPositionStr("-translate-x-[100%]");
-    } else if (positionStr == "-translate-x-[300%]") {
+    } else if (positionStr === "-translate-x-[300%]") {
       setPositionStr("-translate-x-[200%]");
-    } else if (positionStr == "-translate-x-[400%]") {
+    } else if (positionStr === "-translate-x-[400%]") {
       setPositionStr("-translate-x-[300%]");
     }
   }
 
   function nextSection() {
-    if (positionStr == "-translate-x-[0%]") {
+    if (positionStr === "-translate-x-[0%]") {
       setPositionStr("-translate-x-[100%]");
-    } else if (positionStr == "-translate-x-[100%]") {
+    } else if (positionStr === "-translate-x-[100%]") {
       setPositionStr("-translate-x-[200%]");
-    } else if (positionStr == "-translate-x-[200%]") {
+    } else if (positionStr === "-translate-x-[200%]") {
       setPositionStr("-translate-x-[300%]");
-    } else if (positionStr == "-translate-x-[300%]") {
+    } else if (positionStr === "-translate-x-[300%]") {
       setPositionStr("-translate-x-[400%]");
     }
   }
@@ -59,7 +59,7 @@ export default function CarouselSkills() {
         Skills
       </h2>
       <div className="w-full text-slate-50 md:p-8">
-        <div className="flex items-center">
+        <div className="flex w-full items-center">
           <button type="button" onClick={prevSection} className="flex">
             <span className="inline-flex items-center justify-center">
               <svg className="w-5" fill="none" viewBox="0 0 6 10">
