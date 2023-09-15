@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="../julianarce.png" sizes="any"></link>
+        <link rel="icon" href="../julianarce.ico" sizes="any"></link>
       </head>
       <body className={inter.className}>
         <main className="bg-white text-white">

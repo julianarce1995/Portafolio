@@ -36,20 +36,20 @@ export default function Character({ id }) {
       {characterFound ? (
         <div
           key={characterFound.id}
-          className="flex flex-col max-w-xs rounded-xl shadow-2xl shadow-gray-600"
+          className="flex flex-col max-w-xs rounded-3xl shadow-2xl shadow-gray-600"
         >
           <div className="w-full h-full">
             {characterFound.image ? (
               <img
-                className="w-80 h-96 rounded-t-lg"
+                className="w-80 h-96 rounded-t-3xl"
                 src={characterFound.image}
               ></img>
             ) : (
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/HP_-_Harry_Potter_wordmark.svg/1871px-HP_-_Harry_Potter_wordmark.svg.png"></img>
             )}
           </div>
-          <div className="w-full">
-            <div className="grid grid-cols-2 m-5 capitalize text-sm text-gray-900">
+          <div className="flex items-center justify-center w-full border-b-2 rounded-b-3xl border-gray-500 p-8">
+            <div className="grid grid-cols-2 capitalize text-sm text-gray-900">
               <span className="mb-4 text-center text-3xl font-bold text-gray-700 capitalize col-span-2">
                 {characterFound.name ? characterFound.name : null}
               </span>

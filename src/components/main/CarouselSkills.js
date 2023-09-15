@@ -60,7 +60,11 @@ export default function CarouselSkills() {
       </h2>
       <div className="w-full text-slate-50 md:p-8">
         <div className="flex w-full items-center">
-          <button type="button" onClick={prevSection} className="flex">
+          <button
+            type="button"
+            onClick={prevSection}
+            className="md:flex hidden"
+          >
             <span className="inline-flex items-center justify-center">
               <svg className="w-5" fill="none" viewBox="0 0 6 10">
                 <path
@@ -74,14 +78,17 @@ export default function CarouselSkills() {
               <span className="sr-only">Previous</span>
             </span>
           </button>
-          <div className="overflow-hidden w-full">
-            <div className="flex">
+          <div
+            className="md:overflow-hidden md:touch-none
+           overflow-x-auto touch-pan-x w-full"
+          >
+            <div className="flex ">
               <div
-                className={`flex flex-nowrap w-full transition-transform duration-1000 ${positionStr}`}
+                className={`flex w-full transition-transform duration-1000 ${positionStr}`}
               >
                 {imagesSkills.map((item) => (
                   <div
-                    className="flex flex-col flex-nowrap p-2 min-w-[20%] items-center transition-transform group duration-500 ease-in hover:-translate-y-0 hover:scale-110"
+                    className="flex flex-col p-2 min-w-[20%] items-center transition-transform group duration-500 ease-in hover:-translate-y-0 hover:scale-110"
                     key={item}
                   >
                     <img
@@ -98,7 +105,11 @@ export default function CarouselSkills() {
               </div>
             </div>
           </div>
-          <button type="button" onClick={nextSection} className="flex">
+          <button
+            type="button"
+            onClick={nextSection}
+            className="md:flex hidden"
+          >
             <span className="inline-flex items-center justify-center">
               <svg className="w-5" fill="none" viewBox="0 0 6 10">
                 <path

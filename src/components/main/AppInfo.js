@@ -53,7 +53,7 @@ export default function AppInfo() {
         </div>
         <div className="flex items-center justify-center col-span-1">
           <img
-            className="w-40 h-40 sm:w-44 sm:h-44 rounded-full shadow-2xl shadow-slate-700"
+            className="w-40 h-40 md:my-0 my-8 sm:w-44 sm:h-44 rounded-full shadow-2xl shadow-slate-700"
             src="../../julianarce3.jpg"
             alt="julian-arce-image"
           />

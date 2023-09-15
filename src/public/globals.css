@@ -28,18 +28,5 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 5px;
-}
-::-webkit-scrollbar-track {
-  background: rgb(31 41 55);
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: rgb(20 184 166);
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: rgb(13 148 136);
+  display: none;
 }

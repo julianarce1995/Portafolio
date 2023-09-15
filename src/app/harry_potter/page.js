@@ -92,7 +92,11 @@ export default function HarryPotterPage() {
           </div>
         </form>*/}
         <div className="flex justify-center items-center w-full">
-          <button type="button" onClick={prevSection} className="flex m-4">
+          <button
+            type="button"
+            onClick={prevSection}
+            className="lg:flex hidden m-4"
+          >
             <span className="inline-flex items-center justify-center">
               <svg className="w-5" fill="none" viewBox="0 0 6 10">
                 <path
@@ -110,7 +114,11 @@ export default function HarryPotterPage() {
             results={results.length > 0 ? results : data}
             positionStr={positionStr}
           />
-          <button type="button" onClick={nextSection} className="flex m-4">
+          <button
+            type="button"
+            onClick={nextSection}
+            className="lg:flex hidden m-4"
+          >
             <span className="inline-flex items-center justify-center">
               <svg className="w-5" fill="none" viewBox="0 0 6 10">
                 <path
