@@ -23,8 +23,18 @@ export default function MenuPortafolio({ showMenu }) {
         <ul className="py-2" aria-labelledby="user-menu-button">
           <li>
             <Link
-              href="/"
+              href={currentPage === "/" ? "" : "/"}
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              onClick={
+                currentPage === "/"
+                  ? (e) => {
+                      e.preventDefault();
+                      document
+                        .getElementById("navbar")
+                        .scrollIntoView({ behavior: "smooth" });
+                    }
+                  : ""
+              }
             >
               Home
             </Link>

@@ -57,8 +57,18 @@ export default function Layout({ children }) {
       <nav className="flex justify-around items-center bg-gray-800 fixed w-full h-16 z-40 border-b-2 border-b-slate-700 shadow-lg shadow-slate-400">
         <div className="flex w-1/3 items-center">
           <Link
-            href="/"
-            className="w-full flex lg:flex-row flex-col items-center text-white lg:ms-6 ms-2 py-2 text-2xl font-extrabold whitespace-nowrap"
+            href={currentPage === "/" ? "" : "/"}
+            className="flex lg:flex-row flex-col items-center text-white lg:ms-6 ms-2 py-2 text-2xl font-extrabold whitespace-nowrap"
+            onClick={
+              currentPage === "/"
+                ? (e) => {
+                    e.preventDefault();
+                    document
+                      .getElementById("navbar")
+                      .scrollIntoView({ behavior: "smooth" });
+                  }
+                : ""
+            }
           >
             <h1>Julian D. Arce</h1>
             <p className="text-xs font-medium lg:m-2 lg:mt-3 m-0 mt-0 text-center">
@@ -72,55 +82,55 @@ export default function Layout({ children }) {
               currentPage !== "/" ? "hidden" : "flex justify-between w-1/2"
             }
           >
-            <li className="group transition-transform duration-500 ease-in hover:-translate-y-0 hover:scale-110 p-2 rounded-md active:bg-gray-700 active:ring-2 active:ring-gray-500 active:ring-opacity-50">
-              <Link
-                href="/"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document
-                    .getElementById("navbar")
-                    .scrollIntoView({ behavior: "smooth" });
-                }}
-              >
+            <Link
+              href="/"
+              onClick={(e) => {
+                e.preventDefault();
+                document
+                  .getElementById("navbar")
+                  .scrollIntoView({ behavior: "smooth" });
+              }}
+            >
+              <li className="group transition-transform duration-500 ease-in hover:-translate-y-0 hover:scale-110 pt-2 pb-1 px-5 m-2 rounded-3xl border-2 border-gray-700 active:bg-gray-700 active:ring-2 active:ring-gray-500 active:ring-opacity-50 hover:bg-black">
                 Home
                 <span className="block max-w-0 group-hover:max-w-full transition-all duration-1000 h-1 bg-teal-500 rounded-full"></span>
-              </Link>
-            </li>
-            <li className="group transition-transform duration-500 ease-in hover:-translate-y-0 hover:scale-110 p-2 rounded-md active:bg-gray-700 active:ring-2 active:ring-gray-500 active:ring-opacity-50">
-              <Link
-                href="/#about"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document
-                    .getElementById("about")
-                    .scrollIntoView({ behavior: "smooth" });
-                }}
-              >
+              </li>
+            </Link>
+            <Link
+              href="/#about"
+              onClick={(e) => {
+                e.preventDefault();
+                document
+                  .getElementById("about")
+                  .scrollIntoView({ behavior: "smooth" });
+              }}
+            >
+              <li className="group transition-transform duration-500 ease-in hover:-translate-y-0 hover:scale-110 pt-2 pb-1 px-5 m-2 rounded-3xl border-2 border-gray-700 active:bg-gray-700 active:ring-2 active:ring-gray-500 active:ring-opacity-50 hover:bg-black">
                 About
                 <span className="block max-w-0 group-hover:max-w-full transition-all duration-1000 h-1 bg-teal-500 rounded-full"></span>
-              </Link>
-            </li>
-            <li className="group transition-transform duration-500 ease-in hover:-translate-y-0 hover:scale-110 p-2 rounded-md active:bg-gray-700 active:ring-2 active:ring-gray-500 active:ring-opacity-50">
-              <Link
-                href="#contact"
-                scroll={true}
-                onClick={(e) => {
-                  e.preventDefault();
-                  document
-                    .getElementById("contact")
-                    .scrollIntoView({ behavior: "smooth" });
-                }}
-              >
+              </li>
+            </Link>
+            <Link
+              href="#contact"
+              scroll={true}
+              onClick={(e) => {
+                e.preventDefault();
+                document
+                  .getElementById("contact")
+                  .scrollIntoView({ behavior: "smooth" });
+              }}
+            >
+              <li className="group transition-transform duration-500 ease-in hover:-translate-y-0 hover:scale-110 pt-2 pb-1 px-5 m-2 rounded-3xl border-2 border-gray-700 active:bg-gray-700 active:ring-2 active:ring-gray-500 active:ring-opacity-50 hover:bg-black">
                 Contact
                 <span className="block max-w-0 group-hover:max-w-full transition-all duration-1000 h-1 bg-teal-500 rounded-full"></span>
-              </Link>
-            </li>
+              </li>
+            </Link>
           </ul>
         </div>
         <div className="flex justify-end w-1/3 sm:me-10">
           <button
             type="button"
-            className="px-2 h-10 rounded-md active:bg-gray-700 active:ring-2 active:ring-gray-50 active:ring-opacity-50 border-2 border-gray-500"
+            className="px-2 h-10 rounded-3xl active:bg-gray-700 active:ring-2 active:ring-gray-50 active:ring-opacity-50 border-2 border-gray-500 hover:bg-black"
             onClick={toggleMenu}
           >
             <span className="sr-only">Open Menu</span>
