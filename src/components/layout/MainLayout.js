@@ -130,7 +130,7 @@ export default function Layout({ children }) {
         <div className="flex justify-end w-1/3 sm:me-10">
           <button
             type="button"
-            className="px-2 h-10 rounded-3xl active:bg-gray-700 active:ring-2 active:ring-gray-50 active:ring-opacity-50 border-2 border-gray-500 hover:bg-black"
+            className="px-2 h-10 rounded-lg active:bg-gray-700 active:ring-2 active:ring-gray-50 active:ring-opacity-50 border-2 border-gray-500 hover:bg-black"
             onClick={toggleMenu}
           >
             <span className="sr-only">Open Menu</span>
