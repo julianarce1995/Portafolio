@@ -66,14 +66,12 @@ export default function Layout({ children }) {
             </p>
           </Link>
         </div>
-        <div
-          className={
-            currentPage !== "/"
-              ? "hidden"
-              : "items-center sm:flex justify-center hidden w-1/3"
-          }
-        >
-          <ul className="flex justify-between w-1/2">
+        <div className="items-center sm:flex justify-center hidden w-1/3">
+          <ul
+            className={
+              currentPage !== "/" ? "hidden" : "flex justify-between w-1/2"
+            }
+          >
             <li className="group transition-transform duration-500 ease-in hover:-translate-y-0 hover:scale-110 p-2 rounded-md active:bg-gray-700 active:ring-2 active:ring-gray-500 active:ring-opacity-50">
               <Link
                 href="/"
