@@ -7,7 +7,7 @@ export default function CharactersSection({ results, positionStr }) {
   return (
     <div className="md:w-5/6 sm:w-3/6 p-2 overflow-hidden">
       <div
-        className={`flex md:flex-row flex-col w-full min-h-full transition-transform duration-1000 ${positionStr}`}
+        className={`lg:flex lg:flex-row md:grid md:grid-cols-2 sm:flex-col w-full min-h-full transition-transform duration-1000 ${positionStr}`}
       >
         {results.length > 0 ? (
           results.map((item) => (

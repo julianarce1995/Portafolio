@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   colorBlock: undefined,
   id: undefined,
-  selected: undefined,
+  idSelected: undefined,
 };
 
 const secBlockSlice = createSlice({
@@ -13,7 +13,7 @@ const secBlockSlice = createSlice({
     setSecBlockInfo: (state, action) => {
       state.colorBlock = action.payload.colorBlock;
       state.id = action.payload.id;
-      state.selected = action.payload.selected;
+      state.idSelected = action.payload.selected;
       return state;
     },
   },

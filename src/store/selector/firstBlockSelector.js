@@ -12,5 +12,5 @@ export const selectFirstId = createSelector(
 );
 export const selectFirstIsSelected = createSelector(
   selectBlockState,
-  (state) => state.selected
+  (state) => state.idSelected
 );
