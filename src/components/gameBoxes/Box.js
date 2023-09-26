@@ -11,8 +11,10 @@ import {
 import { selectSecColor, selectSecId } from "@/store/selector/secBlockSelector";
 import { setFirstBlockInfo } from "@/store/slices/firstBlockSlice";
 import { setSecBlockInfo } from "@/store/slices/secBlockSlice";
+import axios from "axios";
+import Link from "next/link";
 
-export default function Box() {
+export default function Box({ player }) {
   const dispatch = useDispatch();
   const [colorBlock1, setColorBlock1] = useState("");
   const [colorBlock2, setColorBlock2] = useState("");
@@ -95,7 +97,7 @@ export default function Box() {
   }
 
   function handleTest() {
-    if (country < countries.length) {
+    if (countries.length >= country) {
       if (
         colorBlock1 === countries[country].color1 &&
         colorBlock2 === countries[country].color2 &&
@@ -108,13 +110,24 @@ export default function Box() {
     setColorBlock1("");
     setColorBlock2("");
     setColorBlock3("");
+    setSelected("");
     dispatch(
       setFirstBlockInfo({ colorBlock: undefined, id: "", idSelected: "" })
     );
     dispatch(
       setSecBlockInfo({ colorBlock: undefined, id: "", idSelected: "" })
     );
-    setSelected("");
+  }
+  function saveScore() {
+    axios
+      .put("/api/players", { name: player, score: score })
+      .then(() => {
+        localStorage.removeItem("player");
+      })
+      .catch((error) => {
+        // eslint-disable-next-line no-console
+        console.error("Error al obtener los puntajes:", error);
+      });
   }
 
   useEffect(() => {
@@ -187,29 +200,39 @@ export default function Box() {
   }, [inGame]);
 
   return (
-    <div className="flex w-full h-full justify-center my-6">
-      <div className="flex items-center mt-16">
-        <div className="flex flex-col items-center m-8">
+    <div className="flex w-full h-screen justify-center my-6">
+      <div className="flex flex-col md:flex-row items-center mt-16">
+        <div className="flex flex-col items-center my-8">
+          <h2 className="text-black text-5xl font-bold my-4">{player}</h2>
           <h3 className="text-black text-3xl font-bold m-3">Ordenar</h3>
-          <p className="text-black text-xl">
+          <p className="text-black text-xl text-center">
             Los colores de las banderas de los paises
           </p>
-          <h3 className="text-black text-5xl font-bold my-4">
-            {countries[country] ? countries[country].name : "Your Final Score"}
+          <h3 className="text-black text-5xl font-bold my-4 text-center">
+            {countries[country] ? countries[country].name : "Tu puntaje final"}
           </h3>
           <h4 className="text-black text-5xl font-bold my-4">
             {countries[country] ? "" : score}
           </h4>
-          <button
-            onClick={handleTest}
-            className="flex w-32 h-12 justify-center items-center py-2 text-white text-center text-md font-bold rounded-lg bg-teal-500 hover:bg-teal-700 focus:ring-4 focus:outline-None focus:ring-teal-300 border-2 border-teal-600"
-          >
-            Comprobar
-          </button>
+          {inGame ? (
+            <button
+              onClick={handleTest}
+              className="flex w-32 h-12 justify-center items-center py-2 text-white text-center text-md font-bold rounded-lg bg-teal-500 hover:bg-teal-700 focus:ring-4 focus:outline-None focus:ring-teal-300 border-2 border-teal-600"
+            >
+              Siguiente
+            </button>
+          ) : (
+            <button
+              onClick={saveScore}
+              className="flex w-32 h-12 justify-center items-center py-2 text-white text-center text-md font-bold rounded-lg bg-teal-500 hover:bg-teal-700 focus:ring-4 focus:outline-None focus:ring-teal-300 border-2 border-teal-600"
+            >
+              <Link href="/game_boxes/game/results_table">Guardar</Link>
+            </button>
+          )}
         </div>
         <div className="flex flex items-center text-black font-bold">
-          <div className="flex flex-col items-center p-8">
-            <h3 className="m-4">Orden colores bandera</h3>
+          <div className="flex flex-col items-center">
+            <h3 className="m-4">Aqui en Orden</h3>
             <Column>
               <Block
                 id="1"
@@ -231,7 +254,7 @@ export default function Box() {
               />
             </Column>
           </div>
-          <div className="flex flex-col items-center p-8">
+          <div className="flex flex-col items-center">
             <h3 className="m-4">Colores</h3>
             <Column>
               <Block

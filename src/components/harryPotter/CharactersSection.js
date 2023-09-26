@@ -3,14 +3,14 @@
 import React from "react";
 import Link from "next/link";
 
-export default function CharactersSection({ results, positionStr }) {
+export default function CharactersSection({ data, positionStr }) {
   return (
     <div className="md:w-5/6 sm:w-3/6 p-2 overflow-hidden">
       <div
         className={`lg:flex lg:flex-row md:grid md:grid-cols-2 sm:flex-col w-full min-h-full transition-transform duration-1000 ${positionStr}`}
       >
-        {results.length > 0 ? (
-          results.map((item) => (
+        {data.length > 0 ? (
+          data.map((item) => (
             <div
               key={item.id}
               className="flex flex-col 2xl:p-8 text-center my-7 p-4 min-w-[20%] sm:min-h-[20%] items-center"

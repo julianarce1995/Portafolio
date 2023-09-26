@@ -8,6 +8,10 @@ const playerSchema = new Schema(
       trim: true,
       unique: true,
     },
+    score: {
+      type: Number,
+      default: 0,
+    },
   },
   {
     timestamps: true,

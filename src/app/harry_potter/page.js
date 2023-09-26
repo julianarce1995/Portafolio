@@ -12,8 +12,6 @@ export default function HarryPotterPage() {
   const dispatch = useDispatch();
   const data = useSelector(selectHarryPotterData);
   const [positionStr, setPositionStr] = useState("-translate-x-[0%]");
-  const [results, setResults] = useState([]);
-  const [characterInput, setCharacterInput] = useState("");
 
   async function fetchCharacters() {
     dispatch(showSpinner());
@@ -25,21 +23,6 @@ export default function HarryPotterPage() {
         dispatch(hideSpinner());
       });
   }
-
-  /*const handleInputChange = (event) => {
-    event.preventDefault();
-    setCharacterInput(event.target.value);
-    const filteredResults = data.filter(
-      (item) =>
-        item.name &&
-        item.name.toLowerCase().includes(characterInput.toLowerCase())
-    );
-    setResults(filteredResults);
-  };
-
-  function searchCharacter(event) {
-    event.preventDefault();
-  }*/
 
   function prevSection() {
     if (positionStr === "-translate-x-[100%]") {
@@ -110,10 +93,7 @@ export default function HarryPotterPage() {
               <span className="sr-only">Previous</span>
             </span>
           </button>
-          <CharacterSection
-            results={results.length > 0 ? results : data}
-            positionStr={positionStr}
-          />
+          <CharacterSection data={data} positionStr={positionStr} />
           <button
             type="button"
             onClick={nextSection}
