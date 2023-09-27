@@ -11,7 +11,7 @@ export default function ContactForm() {
   useEffect(() => {
     setWarningInput(false);
     setWarningTextArea(false);
-  }, [name]);
+  }, [name, message]);
 
   function sendEmail(e) {
     e.preventDefault();
