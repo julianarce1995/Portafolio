@@ -3,8 +3,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { hideSpinner, showSpinner } from "@/store/slices/loaderSlice";
 
 export default function RegisterPage() {
+  const dispatch = useDispatch();
   const router = useRouter();
   const [warning, setWarning] = useState(false);
   const [name, setName] = useState("");
@@ -20,6 +23,7 @@ export default function RegisterPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(showSpinner());
     if (!player) {
       if (name) {
         axios
@@ -34,8 +38,12 @@ export default function RegisterPage() {
             } else {
               router.push("/");
             }
+            dispatch(hideSpinner());
           });
       }
+    } else {
+      router.push("/game_boxes/game");
+      dispatch(hideSpinner());
     }
   };
   return (

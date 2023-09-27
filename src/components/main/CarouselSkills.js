@@ -88,7 +88,7 @@ export default function CarouselSkills() {
               >
                 {imagesSkills.map((item) => (
                   <div
-                    className="flex flex-col p-2 min-w-[20%] items-center transition-transform group duration-500 ease-in hover:-translate-y-0 hover:scale-110"
+                    className="flex flex-col p-2 md:min-w-[20%] min-w-[28%] items-center transition-transform group duration-500 ease-in hover:-translate-y-0 hover:scale-110"
                     key={item}
                   >
                     <img

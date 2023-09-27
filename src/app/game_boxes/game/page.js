@@ -12,7 +12,7 @@ export default function GamePage() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center sm:my-0 my-16 sm:h-screen">
+    <div className="flex flex-col items-center justify-center md:my-0 my-16 md:h-screen">
       {/*<h3 className="mt-24 text-6xl font-bold text-gray-300">En Proceso</h3>*/}
       <Box player={player} />
     </div>

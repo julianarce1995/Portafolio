@@ -11,11 +11,13 @@ import {
 import { selectSecColor, selectSecId } from "@/store/selector/secBlockSelector";
 import { setFirstBlockInfo } from "@/store/slices/firstBlockSlice";
 import { setSecBlockInfo } from "@/store/slices/secBlockSlice";
+import { hideSpinner, showSpinner } from "@/store/slices/loaderSlice";
 import axios from "axios";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Box({ player }) {
   const dispatch = useDispatch();
+  const router = useRouter();
   const [colorBlock1, setColorBlock1] = useState("");
   const [colorBlock2, setColorBlock2] = useState("");
   const [colorBlock3, setColorBlock3] = useState("");
@@ -119,14 +121,17 @@ export default function Box({ player }) {
     );
   }
   function saveScore() {
+    dispatch(showSpinner());
     axios
       .put("/api/players", { name: player, score: score })
       .then(() => {
         localStorage.removeItem("player");
+        router.push("/game_boxes/game/results_table");
       })
       .catch((error) => {
         // eslint-disable-next-line no-console
         console.error("Error al obtener los puntajes:", error);
+        dispatch(hideSpinner());
       });
   }
 
@@ -196,6 +201,7 @@ export default function Box({ player }) {
   useEffect(() => {
     if (inGame) {
       setCountry(0);
+      dispatch(hideSpinner());
     }
   }, [inGame]);
 
@@ -226,7 +232,7 @@ export default function Box({ player }) {
               onClick={saveScore}
               className="flex w-32 h-12 justify-center items-center py-2 text-white text-center text-md font-bold rounded-lg bg-teal-500 hover:bg-teal-700 focus:ring-4 focus:outline-None focus:ring-teal-300 border-2 border-teal-600"
             >
-              <Link href="/game_boxes/game/results_table">Guardar</Link>
+              Guardar
             </button>
           )}
         </div>
