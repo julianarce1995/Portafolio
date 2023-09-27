@@ -1,15 +1,28 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function ContactForm() {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
+  const [warningInput, setWarningInput] = useState(false);
+  const [warningTextArea, setWarningTextArea] = useState(false);
+
+  useEffect(() => {
+    setWarningInput(false);
+    setWarningTextArea(false);
+  }, [name]);
 
   function sendEmail(e) {
     e.preventDefault();
     if (name && message) {
       window.location.href = `mailto:julianarce1101@gmail.com?subject=Envio%20de%20formulario%20Contact%20Me%20portafolio%20Julian%20Arce&body=Nombre%3A${name}%0AMensaje%3A${message}`;
+    }
+    if (!name) {
+      setWarningInput(true);
+    }
+    if (!message) {
+      setWarningTextArea(true);
     }
   }
   return (
@@ -29,9 +42,14 @@ export default function ContactForm() {
                       placeholder="Your name here"
                       type="text"
                       name="name"
+                      value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="text-md text-black block px-3 py-2 rounded-lg w-full
-                bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-teal-500 focus:outline-none"
+                      className={`text-md text-black block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:outline-none ${
+                        warningInput
+                          ? "border-rose-500"
+                          : "focus:border-teal-500"
+                      }
+                        `}
                     />
                   </div>
                   <div className="py-4">
@@ -41,10 +59,14 @@ export default function ContactForm() {
                     <textarea
                       id="message"
                       name="message"
+                      value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       rows="4"
-                      className="text-md block text-black px-3 py-2 rounded-lg w-full
-                      bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-teal-500 focus:outline-none"
+                      className={`text-md block text-black px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-teal-500 focus:outline-none ${
+                        warningTextArea
+                          ? "border-rose-500"
+                          : "focus:border-teal-500"
+                      }`}
                       placeholder="Write your message here..."
                     ></textarea>
                   </div>
