@@ -200,8 +200,8 @@ export default function Box({ player }) {
   }, [inGame]);
 
   return (
-    <div className="flex w-full h-screen justify-center my-6">
-      <div className="flex flex-col md:flex-row items-center mt-16">
+    <div className="flex justify-center">
+      <div className="flex flex-col md:flex-row items-center">
         <div className="flex flex-col items-center my-8">
           <h2 className="text-black text-5xl font-bold my-4">{player}</h2>
           <h3 className="text-black text-3xl font-bold m-3">Ordenar</h3>
